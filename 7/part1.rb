@@ -8,9 +8,9 @@ def run_phase(phase_seq)
   next_input = 0
 
   phase_seq.each do |phase|
-    i = Intcode.new(get_code, [phase, next_input])
-    i.run
-    next_input = i.get_output[0]
+    i = Intcode.new(get_code, phase)
+    i.add_input(next_input)
+    next_input = i.process
   end
 
   next_input
